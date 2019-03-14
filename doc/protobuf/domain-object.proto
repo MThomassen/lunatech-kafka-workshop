@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.lunatech.materializer.rpc;
+
+option java_package = "com.lunatech.kafka.common";
+option java_multiple_files = true;
+option optimize_for = SPEED;
+
+import "google/protobuf/timestamp.proto";
+
+message DomainObject {
+    enum CurrencyType {
+        UNKNOWN = 0;
+        euro = 1;
+        us_dollar = 2;
+    }
+
+    bytes id = 1;
+    string name = 2;
+    repeated DomainObjectChild children = 3;
+
+    sint32 currency = 11;
+    int32 currency_millis = 12;
+    CurrencyType type = 13;
+
+    google.protobuf.Timestamp timestamp = 21;
+}
+
+message DomainObjectChild {
+    bytes id = 1;
+    string name = 2;
+}

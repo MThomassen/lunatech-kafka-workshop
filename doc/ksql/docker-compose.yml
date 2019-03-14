@@ -1,0 +1,10 @@
+version: '2'
+services:
+  ksql-server:
+    image: "confluentinc/cp-ksql-server:5.0.0"
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_BOOTSTRAP_SERVERS: mtn.westeurope.cloudapp.azure.com:9092
+      KSQL_LISTENERS: http://0.0.0.0:8088
+      KSQL_KSQL_SERVICE_ID: confluent_ksql_server
